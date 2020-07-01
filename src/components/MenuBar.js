@@ -15,35 +15,37 @@ const MenuBar = (props) => {
  let handleProps = (item) => {
 
   console.log("A Tag", item)
+  console.log("A ID", item.id)
+  console.log("A ClassName", item.className)
   item.classList.add("active") // change to active
 
   // change all others to inactive 
   // console.log(document.querySelectorAll('a'))
 
-  document.querySelectorAll('a').forEach(aEle => {
-    if (aEle.id !== item.id) {
-      aEle.classList.remove("active")
-    }
-  })
-
+  // document.querySelectorAll('a').forEach(aEle => {
+  //   if (aEle.id !== item.id) {
+  //     aEle.classList.remove("active")
+  //   }
+  // })
+  setInterval(() => item.classList.remove("active"), 1000)
   props.changeSelected(item.id)
-
 }
+
   return (
-    <div className="ui four item menu">
-      <a onClick={(e) => handleProps(e.target)} className="item active" id="profile">
+    <div onClick={(e) => handleProps(e.target)} className="ui four item menu">
+      <a className="item active" id="profile">
         <i className="user large icon" id="profile"/>
       </a>
 
-      <a onClick={(e) => handleProps(e.target)} className="item" id="photo">
+      <a className="item" id="photo">
         <i className="photo large icon" id="photo"/>
       </a>
 
-      <a onClick={(e) => handleProps(e.target)} className="item" id="cocktail">
+      <a className="item" id="cocktail">
         <i className="cocktail large icon" id="cocktail"/>
       </a>
 
-      <a onClick={(e) => handleProps(e.target)} className="item" id="pokemon"> 
+      <a className="item" id="pokemon"> 
         <i className=" themeisle large icon" id="pokemon"/>
       </a>
     </div>
