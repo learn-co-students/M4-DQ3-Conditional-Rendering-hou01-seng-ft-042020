@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MenuBar = (props) => {
-
+  console.log("MenuBar", props)
   /*
 
   The 'a' tags below are the menu items. Think about the way a menu 
@@ -12,22 +12,38 @@ const MenuBar = (props) => {
   this component be made aware of what is currently the active menu item?
 
   */
+ let handleProps = (e) => {
 
+  console.log("A Tag", e.target)
+  e.target.classList.add("active") // change to active
+
+  // change all others to inactive 
+  // console.log(document.querySelectorAll('a'))
+
+  document.querySelectorAll('a').forEach(aEle => {
+    if (aEle.id !== e.target.id) {
+      aEle.classList.remove("active")
+    }
+  })
+
+  props.changeSelected(e.target.id)
+
+}
   return (
     <div className="ui four item menu">
-      <a className="item active" id="profile">
+      <a onClick={(e) => handleProps(e, e.target)} className="item active" id="profile">
         <i className="user large icon" id="profile"/>
       </a>
 
-      <a className="item" id="photo">
+      <a onClick={(e) => handleProps(e, e.target)} className="item" id="photo">
         <i className="photo large icon" id="photo"/>
       </a>
 
-      <a className="item" id="cocktail">
+      <a onClick={(e) => handleProps(e, e.target)} className="item" id="cocktail">
         <i className="cocktail large icon" id="cocktail"/>
       </a>
 
-      <a className="item" id="pokemon"> 
+      <a onClick={(e) => handleProps(e, e.target)} className="item" id="pokemon"> 
         <i className=" themeisle large icon" id="pokemon"/>
       </a>
     </div>
