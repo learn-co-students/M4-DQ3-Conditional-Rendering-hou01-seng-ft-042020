@@ -56,8 +56,8 @@ class MainBox extends React.Component {
     return (
       <div>
         <MenuBar 
-        changeSelected={this.changeSelected} 
-        selected={this.state.selected}/>
+        changeSelected={this.changeSelected}/> 
+        {/* selected={this.state.selected}/> */}
           {displayMap[this.state.selected]}
         </div>
     )
